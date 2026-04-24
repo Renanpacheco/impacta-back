@@ -1,4 +1,4 @@
-namespace tarefas.Models;
+namespace tarefa.Models;
 
 public class Tarefa
 {

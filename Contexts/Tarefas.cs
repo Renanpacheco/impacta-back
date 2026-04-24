@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using tarefas.Models;
+using tarefa.Models;
 
 namespace tarefa.Contexts;
 
