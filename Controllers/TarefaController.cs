@@ -50,10 +50,10 @@ public class TarefaController: Controller
 
     public IActionResult Delete(int id){
 
-        var todo= _context.Tarefas.Find(id);
-        ViewData["Title"]= "Delete";
+        var tarefa= _context.Tarefas.Find(id);
+        ViewData["Title"]= "Excluir tarefa";
 
-        return View(todo);
+        return View(tarefa);
     }
 
     [HttpPost]

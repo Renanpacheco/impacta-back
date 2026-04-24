@@ -1,0 +1,10 @@
+@model tarefa.Models.Tarefa
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Certeza que quer deletar <strong>@Model.Titulo</strong>?</p>
+
+<form method="post">
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a asp-controller="tarefa" asp-action="Index"class="btn btn-primary">Cancel</a>
+</form>
