@@ -27,6 +27,7 @@ public class TarefaController: Controller
     [HttpPost]
     public IActionResult Criar(Tarefa tarefa)
     {
+        tarefa.Criacao = DateTime.Now;
         _context.Tarefas.Add(tarefa);
         _context.SaveChanges();
         return RedirectToAction("index");
