@@ -1,34 +1,39 @@
 @model List<tarefa.Models.Tarefa>
 
 <h1>tarefa controller</h1>
-
+@if(Model.Count <0){
+    <p> Nenhuma tarefa cadastrada</p>
+}else{
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Título</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Criação</th>
+      <th scope="col">Status</th>      
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>do</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>social</td>
-    </tr>
+    @foreach (var tarefa in Model){
+        <tr>
+            <td>@tarefa.Id</td>
+            <td>@tarefa.Titulo</td>
+            <td>@tarefa.Descricao</td>
+            <td>@tarefa.Criacao</td>
+            <td>@tarefa.Status</td>
+            <td>
+                <a class="btn btn-warning btn-sm">Editar</a>
+                <a class="btn btn-danger btn-sm">Excluir</a>
+                <a class="btn btn-success btn-sm">Concluir</a>
+            </td>
+            
+        </tr>
+
+    }    
+    
   </tbody>
 </table>
+}
+<a class="btn btn-primary btn-sm">Nova tarefa</a>

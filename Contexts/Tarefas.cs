@@ -9,6 +9,6 @@ public class TarefasContext: DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;");
+        optionsBuilder.UseSqlServer("Server=localhost,1433;Database=TarefasDb;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=True;");
     }
 }

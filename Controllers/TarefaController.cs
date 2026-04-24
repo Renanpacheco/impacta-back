@@ -20,8 +20,8 @@ public class TarefaController: Controller
             descricao= "nova"
 
         };*/
-        //var tarefas= _context.Tarefas.ToList();
+        var tarefas= _context.Tarefas.ToList();
 
-        return View();
+        return View(tarefas);
     }
 }
