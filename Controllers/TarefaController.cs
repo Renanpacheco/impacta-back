@@ -31,7 +31,7 @@ public class TarefaController: Controller
         if (ModelState.IsValid)
         {
             tarefa.Criacao = DateTime.Now;
-            tarefa.Status="Em Andamento";
+            tarefa.Status="Pendente";
             _context.Tarefas.Add(tarefa);
             _context.SaveChanges();
             return RedirectToAction("index");
@@ -92,5 +92,16 @@ public class TarefaController: Controller
         
 
         return RedirectToAction("Index");
+    }
+
+    public IActionResult Finalizar(int id)
+    {
+        var tarefa = _context.Tarefas.Find(id);
+        if(tarefa is null){
+            return NotFound();
+        }
+        tarefa.Status = "Concluída";
+        _context.SaveChanges();
+        return RedirectToAction("index");
     }
 }
