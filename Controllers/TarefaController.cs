@@ -47,4 +47,22 @@ public class TarefaController: Controller
         _context.SaveChanges();
         return RedirectToAction("index");
     }
+
+    public IActionResult Delete(int id){
+
+        var todo= _context.Tarefas.Find(id);
+        ViewData["Title"]= "Delete";
+
+        return View(todo);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(Tarefa tarefa){
+
+        _context.Tarefas.Remove(tarefa);
+        _context.SaveChanges();
+        
+
+        return RedirectToAction("Index");
+    }
 }
