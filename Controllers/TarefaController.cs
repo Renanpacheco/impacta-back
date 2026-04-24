@@ -13,15 +13,14 @@ public class TarefaController: Controller
     }
     public IActionResult Index()
     {
-        /*var tarefa= new Tarefa
-        {
-            Id=1,
-            Titulo = "teste",
-            descricao= "nova"
-
-        };*/
         var tarefas= _context.Tarefas.ToList();
 
         return View(tarefas);
+    }
+
+    public IActionResult Criar()
+    {
+        ViewData["Title"] = "Nova tarefa";
+        return View("Form");
     }
 }
