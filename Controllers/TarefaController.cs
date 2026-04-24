@@ -23,4 +23,12 @@ public class TarefaController: Controller
         ViewData["Title"] = "Nova tarefa";
         return View("Form");
     }
+
+    [HttpPost]
+    public IActionResult Criar(Tarefa tarefa)
+    {
+        _context.Tarefas.Add(tarefa);
+        _context.SaveChanges();
+        return RedirectToAction("index");
+    }
 }
