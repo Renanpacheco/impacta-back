@@ -44,3 +44,4 @@ Thumbs.db
 .vscode
 obj
 bin
+/Migrations
