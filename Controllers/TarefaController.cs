@@ -31,4 +31,19 @@ public class TarefaController: Controller
         _context.SaveChanges();
         return RedirectToAction("index");
     }
+
+    public IActionResult Editar(int id)
+    {
+        ViewData["Title"] = "Editar tarefa";
+        var tarefa = _context.Tarefas.Find(id);
+        return View("Form", tarefa);
+    }
+
+    [HttpPost]
+    public IActionResult Editar(Tarefa tarefa)
+    {
+        _context.Tarefas.Update(tarefa);
+        _context.SaveChanges();
+        return RedirectToAction("index");
+    }
 }
