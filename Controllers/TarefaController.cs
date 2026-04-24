@@ -27,30 +27,58 @@ public class TarefaController: Controller
     [HttpPost]
     public IActionResult Criar(Tarefa tarefa)
     {
-        tarefa.Criacao = DateTime.Now;
-        _context.Tarefas.Add(tarefa);
-        _context.SaveChanges();
-        return RedirectToAction("index");
+        ViewData["Title"] = "Nova tarefa";
+        if (ModelState.IsValid)
+        {
+            tarefa.Criacao = DateTime.Now;
+            tarefa.Status="Em Andamento";
+            _context.Tarefas.Add(tarefa);
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+        else
+        {
+
+            return View("Form", tarefa);
+        }
     }
 
     public IActionResult Editar(int id)
     {
+        
         ViewData["Title"] = "Editar tarefa";
         var tarefa = _context.Tarefas.Find(id);
+        if(tarefa is null){
+            return NotFound();
+        }
         return View("Form", tarefa);
     }
 
     [HttpPost]
     public IActionResult Editar(Tarefa tarefa)
     {
-        _context.Tarefas.Update(tarefa);
-        _context.SaveChanges();
-        return RedirectToAction("index");
+        ViewData["Title"] = "Editar tarefa";
+        if (ModelState.IsValid)
+        {
+            _context.Tarefas.Update(tarefa);
+            _context.SaveChanges();
+            return RedirectToAction("index");
+
+        }
+        else
+        {
+            return View("Form", tarefa);
+        }
+        
     }
 
     public IActionResult Delete(int id){
+        
 
         var tarefa= _context.Tarefas.Find(id);
+        if(tarefa is null){
+            return NotFound();
+        }
         ViewData["Title"]= "Excluir tarefa";
 
         return View(tarefa);
